@@ -1,0 +1,14 @@
+.notes-list-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 25rem;
+    width: 50%;
+    padding: 1rem;
+}
+
+@media (max-width: 450px) {
+    .notes-list-container {
+        width: 90%;
+    }
+}

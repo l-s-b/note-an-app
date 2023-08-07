@@ -1,0 +1,27 @@
+<div #container class="note-card-container">
+    <div class="note-card-content">
+        <div class="note-card-title">
+            <h1>{{ title }}</h1>
+            <div class="note-card-buttons">
+                <span class="edit-btn">
+                    <mat-icon
+                        aria-hidden="false"
+                        aria-label="Edit icon"
+                        fontIcon="edit"
+                    ></mat-icon>
+                </span>
+                <span class="delete-btn">
+                    <mat-icon
+                        aria-hidden="false"
+                        aria-label="Delete icon"
+                        fontIcon="delete"
+                    ></mat-icon>
+                </span>
+            </div>
+        </div>
+        <div class="note-card-body">
+            <p>{{ body }}</p>
+            <div class="vanish"></div>
+        </div>
+    </div>
+</div>
