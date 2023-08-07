@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { NoteCardComponent } from 'src/app/note-card/note-card.component';
 import { SearchbarComponent } from 'src/app/searchbar/searchbar.component';
 @Component({
@@ -6,7 +7,7 @@ import { SearchbarComponent } from 'src/app/searchbar/searchbar.component';
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.scss'],
   standalone: true,
-  imports: [SearchbarComponent, NoteCardComponent]
+  imports: [SearchbarComponent, NoteCardComponent, RouterLink]
 })
 export class NotesListComponent {
 

@@ -1,0 +1,9 @@
+@import '../../main-styles.scss';
+
+input {
+    color: $myWhite;
+    &::placeholder {
+        color: $myWhite;
+        opacity: 0.75;
+    }
+}

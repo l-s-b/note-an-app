@@ -1,25 +1,25 @@
 <div class="edit-form-container">
-    <form #editForm="ngForm">
+    <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)">
 
         <div class="field">
             <label class="label">Title</label>
             <div class="control">
-                <input type="text" class="input">
+                <input type="text" name="title" [ngModel]="note.title" required class="input">
             </div>  
         </div>
         <div class="field">
             <label class="label">Description</label>
             <div class="control">
-                <textarea class="textarea"></textarea>
+                <textarea class="textarea" name="description" [ngModel]="note.description" required></textarea>
             </div>  
         </div>
 
         <div class="field edit-form-buttons">
             <div class="control">
-                <button class="button" type="button">Discard</button>
+                <button class="button" type="button" routerLink="">Discard</button>
             </div>
             <div class="control">
-                <button class="button is-primary" type="submit">Save changes</button>
+                <button class="button is-primary" type="submit" [disabled]="!editForm.valid">Save changes</button>
             </div>
         </div>
 

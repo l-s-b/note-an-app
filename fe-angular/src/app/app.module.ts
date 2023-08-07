@@ -9,6 +9,9 @@ import { NoteCardComponent } from './note-card/note-card.component';
 import { SearchbarComponent } from './searchbar/searchbar.component';
 import { EditNoteComponent } from './pages/edit-note/edit-note.component';
 import { NoteDetailComponent } from './pages/note-detail/note-detail.component';
+import { NewNoteComponent } from './pages/new-note/new-note.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -16,11 +19,14 @@ import { NoteDetailComponent } from './pages/note-detail/note-detail.component';
     MainSpaceComponent,
     EditNoteComponent,
     NoteDetailComponent,
+    NewNoteComponent,
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    RouterModule,
     NotesListComponent,
     SearchbarComponent,
     NoteCardComponent,

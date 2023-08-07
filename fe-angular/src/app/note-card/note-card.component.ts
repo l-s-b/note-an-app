@@ -11,7 +11,7 @@ import { MatIconModule } from '@angular/material/icon';
 export class NoteCardComponent implements OnInit {
 
   @Input() title: string | undefined;
-  @Input() body: string | undefined;
+  @Input() description: string | undefined;
   constructor(private renderer: Renderer2) {}
   
   ngOnInit() {

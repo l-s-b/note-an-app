@@ -19,6 +19,29 @@
     flex-wrap: wrap;
 }
 
+form.ng-submitted {
+    input.ng-invalid, textarea.ng-invalid {
+        background-color: rgba($myRed, 0.1);
+        border: 2px solid $myRed;
+        box-shadow: none;
+        &:focus {
+            box-shadow: 0px 0px 5px 5px rgba($myRed, 0.2);
+        }
+    }
+}
+
+input, textarea {
+    &.ng-touched.ng-invalid {
+        background-color: rgba($myRed, 0.1);
+        border: 2px solid $myRed;
+        box-shadow: none;
+        &:focus {
+            box-shadow: 0px 0px 10px 5px rgba($myRed, 0.2);
+        }
+    }
+    
+}
+
 @media (max-width: 450px) {
     .edit-form-container {
         width: 90%;

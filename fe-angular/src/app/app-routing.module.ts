@@ -4,6 +4,8 @@ import { MainSpaceComponent } from './pages/main-space/main-space.component';
 import { NotesListComponent } from './pages/notes-list/notes-list.component';
 import { NoteDetailComponent } from './pages/note-detail/note-detail.component';
 import { EditNoteComponent } from './pages/edit-note/edit-note.component';
+import { NewNoteComponent } from './pages/new-note/new-note.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   {
@@ -11,8 +13,10 @@ const routes: Routes = [
     component: MainSpaceComponent,
     children: [
       { path: '', component: NotesListComponent },
-      { path: ':id', component: NoteDetailComponent },
-      { path: 'edit/:id', component: EditNoteComponent }
+      { path: 'detail/:id', component: NoteDetailComponent },
+      { path: 'new', component: NewNoteComponent },
+      { path: 'edit/:id', component: EditNoteComponent },
+      { path: '**', component: NotFoundComponent }
     ]
   }
 ];
