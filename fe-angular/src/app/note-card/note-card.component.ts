@@ -8,14 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
   standalone: true,
   imports: [MatIconModule]
 })
-export class NoteCardComponent implements OnInit {
+export class NoteCardComponent {
 
   @Input() title: string | undefined;
   @Input() description: string | undefined;
-  constructor(private renderer: Renderer2) {}
-  
-  ngOnInit() {
-   
-  }
 
 }
