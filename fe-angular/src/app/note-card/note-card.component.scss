@@ -80,9 +80,9 @@
             }
         }
     }
-  }
+}
 
-  @media (max-width: 600px) {
+@media (max-width: 600px) {
     .note-card-container {
         font-size: 1rem;
     }
@@ -92,9 +92,9 @@
     .edit-btn, .delete-btn {
         margin-top: 0.5rem;
     }
-  }
+}
 
-  @media (max-width: 450px) {
+@media (max-width: 450px) {
     .note-card-title {
         flex-wrap: wrap;
         h1 {
@@ -107,5 +107,4 @@
        justify-content: center;
        margin: auto;
     }
-
-  }
+}

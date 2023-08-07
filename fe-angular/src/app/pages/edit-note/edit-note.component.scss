@@ -1,0 +1,26 @@
+@import '../../../main-styles.scss';
+
+.edit-form-container {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    max-width: 25rem;
+    width: 50%;
+    padding: 1rem;
+
+    label { color: $myWhite; }
+}
+
+.edit-form-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+    justify-content: right;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 450px) {
+    .edit-form-container {
+        width: 90%;
+    }
+}

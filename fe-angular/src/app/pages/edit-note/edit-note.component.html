@@ -1,5 +1,27 @@
 <div class="edit-form-container">
     <form #editForm="ngForm">
-        
+
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input type="text" class="input">
+            </div>  
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <textarea class="textarea"></textarea>
+            </div>  
+        </div>
+
+        <div class="field edit-form-buttons">
+            <div class="control">
+                <button class="button" type="button">Discard</button>
+            </div>
+            <div class="control">
+                <button class="button is-primary" type="submit">Save changes</button>
+            </div>
+        </div>
+
     </form>
 </div>
