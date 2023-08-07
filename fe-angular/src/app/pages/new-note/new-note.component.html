@@ -1,1 +1,27 @@
-<p>new-note works!</p>
+<div class="post-form-container">
+    <form #postForm="ngForm" (ngSubmit)="onSubmit(postForm)">
+        <h1>Add New Note</h1>
+        <div class="field">
+            <label class="label">Title</label>
+            <div class="control">
+                <input type="text" name="title" [ngModel]="note.title" required class="input">
+            </div>  
+        </div>
+        <div class="field">
+            <label class="label">Description</label>
+            <div class="control">
+                <textarea class="textarea" name="description" [ngModel]="note.description" required></textarea>
+            </div>  
+        </div>
+
+        <div class="field post-form-buttons">
+            <div class="control">
+                <button class="button" type="button" routerLink="">Discard</button>
+            </div>
+            <div class="control">
+                <button class="button is-primary" type="submit" [disabled]="!postForm.valid">Save changes</button>
+            </div>
+        </div>
+
+    </form>
+</div>
