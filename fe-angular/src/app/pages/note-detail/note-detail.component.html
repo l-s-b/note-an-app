@@ -1,5 +1,11 @@
-<note-card [id]="id" [title]="title" [description]="description"></note-card>
-<button class="button is-primary" routerLink="">Back Home</button>
+<ng-container *ngIf="foundNote; else notFound">
+    <note-card [id]="foundNote.id" [title]="foundNote.title" [description]="foundNote.description"></note-card>
+</ng-container>
 
+<ng-template #notFound>
+    <note404></note404>
+</ng-template>
+
+<button class="button is-primary" routerLink="">Back Home</button>
 
 

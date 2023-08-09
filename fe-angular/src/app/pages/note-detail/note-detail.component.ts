@@ -8,17 +8,17 @@ import { Note } from 'src/app/shared/note.model';
   templateUrl: './note-detail.component.html',
   styleUrls: ['./note-detail.component.scss']
 })
-export class NoteDetailComponent extends Note {
+export class NoteDetailComponent {
+  foundNote: Note | null = null;
+
   constructor(
     private httpService: NotesHttpService,
     private route: ActivatedRoute
-  ) {
-    super();
-  }
+  ) {}
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const id: number = Number(params.get('id'))! || 0;
+      const id: number = Number(params.get('id')) || 0;
       this.getNoteById(id);
     });
   }
@@ -26,9 +26,11 @@ export class NoteDetailComponent extends Note {
   getNoteById = (id: number) => {
     this.httpService.getNote(id).subscribe(
       (response: any) => {
-        this.id = response.id;
-        this.title = response.title;
-        this.description = response.description;
+        this.foundNote = {
+          id: response.id,
+          title: response.title,
+          description: response.description
+        };
       },
       (error) => {
         console.log(error);
