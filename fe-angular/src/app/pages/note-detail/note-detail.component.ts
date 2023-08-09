@@ -8,7 +8,7 @@ import { Note } from 'src/app/shared/note.model';
   templateUrl: './note-detail.component.html',
   styleUrls: ['./note-detail.component.scss']
 })
-export class NoteDetailComponent {
+export class NoteDetailPage {
   foundNote: Note | null = null;
 
   constructor(

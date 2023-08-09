@@ -7,7 +7,7 @@ import { Note } from 'src/app/shared/note.model';
   templateUrl: './new-note.component.html',
   styleUrls: ['./new-note.component.scss']
 })
-export class NewNoteComponent implements OnInit {
+export class NewNotePage implements OnInit {
 
   note!: Note
   

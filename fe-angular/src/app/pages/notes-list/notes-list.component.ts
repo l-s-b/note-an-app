@@ -7,7 +7,7 @@ import { NotesHttpService } from 'src/app/shared/notes.service';
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.scss'],
 })
-export class NotesListComponent {
+export class NoteListPage {
   notes!: Note[];
 
   constructor(private httpService: NotesHttpService) {}
