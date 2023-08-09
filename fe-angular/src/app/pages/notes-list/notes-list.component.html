@@ -1,12 +1,12 @@
 <div class="notes-list-container">
-    <app-searchbar></app-searchbar>
-    <button (click)="getAllNotes()">Get All Notes</button>
+    <searchbar></searchbar>
     <div class="notes-list">
-        <app-note-card title="Title test" description="Body test"></app-note-card>
-        <app-note-card></app-note-card>
-        <app-note-card></app-note-card>
-        <app-note-card></app-note-card>
+        <note-card
+            *ngFor="let note of notes"
+            [title]="note.title"
+            [description]="note.description"
+            [routerLink]="'/detail/' + note.id"
+        />
     </div>
     <button class="button is-primary add-note" routerLink="new">New Note +</button>
 </div>
-

@@ -10,6 +10,7 @@ export class NotesService {
   constructor(
     @InjectRepository(Note) private notesRepository: Repository<Note>,
   ) {}
+
   async getNotes(): Promise<Note[]> {
     return await this.notesRepository.find();
   }

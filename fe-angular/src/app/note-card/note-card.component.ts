@@ -2,7 +2,7 @@ import { Component, Input, OnInit, Renderer2 } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-note-card',
+  selector: 'note-card',
   templateUrl: './note-card.component.html',
   styleUrls: ['./note-card.component.scss'],
   standalone: true,

@@ -17,4 +17,8 @@ export class NotesHttpService {
   getNotes(): Observable<Object> {
     return this.http.get<Object>(this.baseUrl + '/notes');
   }
+
+  getNote(id: number): Observable<Object> {
+    return this.http.get<Object>(this.baseUrl + '/notes/' + id)
+  }
 }
