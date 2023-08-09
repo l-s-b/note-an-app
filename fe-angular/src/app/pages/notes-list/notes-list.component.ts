@@ -3,7 +3,7 @@ import { Note } from 'src/app/shared/note.model';
 import { NotesHttpService } from 'src/app/shared/notes.service';
 
 @Component({
-  selector: 'app-notes-list',
+  selector: 'notes-list',
   templateUrl: './notes-list.component.html',
   styleUrls: ['./notes-list.component.scss'],
 })
