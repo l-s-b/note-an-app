@@ -21,7 +21,7 @@ export class DetailLoader {
   }
 
   getNoteById = (id: number) => {
-    this.httpService.getNote(id).subscribe(
+    this.httpService.getNoteById(id).subscribe(
       (response: any) => {
         this.foundNote = {
           id: response.id,

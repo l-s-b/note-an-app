@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 @Component({
   selector: 'searchbar',
@@ -8,5 +8,9 @@ import { MatIconModule } from '@angular/material/icon';
   imports: [MatIconModule],
 })
 export class SearchbarComponent {
+  @Output() searchQuery = new EventEmitter<string>();
 
-}
+  handleSearchChange(event: any) {
+    this.searchQuery.emit(event.target.value);
+  }
+};

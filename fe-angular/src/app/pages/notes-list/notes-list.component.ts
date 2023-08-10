@@ -27,7 +27,25 @@ export class NoteListPage {
     );
   }
 
-  handleNoteDeletion(deletedNoteId: number) {
+  searchNotes(query: string) {
+    if (query.trim() !== '') {
+      this.httpService.getNotes().subscribe(
+        (response: Object) => {
+          const parsedList: Note[] = JSON.parse(JSON.stringify(response));
+          this.notes = parsedList.filter(
+            note =>
+              note.title.toLowerCase().includes(query.toLowerCase()) ||
+              note.description.toLowerCase().includes(query.toLowerCase())
+          )
+        },
+        (error) => { console.log(error); }
+      );
+    } else {
+      this.getAllNotes();
+    }
+  }
+
+  WipeDeletedNoteFromList(deletedNoteId: number) {
     this.notes = this.notes.filter(note => note.id !== deletedNoteId);
   }
 }

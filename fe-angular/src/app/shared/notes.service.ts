@@ -13,17 +13,19 @@ export class NotesHttpService {
   constructor(private http: HttpClient) {}
   ngOnInit() {}
 
-  getNotes(): Observable<Object> {
-    return this.http.get<Object>(env.apiBaseUrl + '/notes');
-  }
-
-  getNote(id: number): Observable<Object> {
-    return this.http.get<Object>(env.apiBaseUrl + '/notes/' + id)
-  }
   setTokenOptions(): {[headers: string]: HttpHeaders} {
     const customHeaders = new HttpHeaders()
     .set('Authorization', 'Bearer ' + env.jwt)
     return { headers: customHeaders };
+  }
+
+  // Notes CRUD
+  getNotes(): Observable<Object> {
+    return this.http.get<Object>(env.apiBaseUrl + '/notes');
+  }
+
+  getNoteById(id: number): Observable<Object> {
+    return this.http.get<Object>(env.apiBaseUrl + '/notes/' + id)
   }
 
   postNote(note: Note): Observable<Object> {
