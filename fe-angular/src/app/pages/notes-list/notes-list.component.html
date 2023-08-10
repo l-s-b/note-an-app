@@ -3,8 +3,8 @@
     <div class="notes-list">
         <note-card
             *ngFor="let note of notes"
-            [title]="note.title"
-            [description]="note.description"
+            [note]="note"
+            (noteDeleted)="handleNoteDeletion($event)"
             [routerLink]="'/detail/' + note.id"
         />
     </div>

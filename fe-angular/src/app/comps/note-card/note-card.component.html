@@ -1,10 +1,11 @@
 <div #container class="note-card-container">
     <div class="note-card-content">
         <div class="note-card-title">
-            <h1>{{ title }}</h1>
+            <h1>{{ note.title }}</h1>
             <div class="note-card-buttons">
                 <span class="edit-btn">
                     <mat-icon
+                        (click)="editNote($event)"
                         aria-hidden="false"
                         aria-label="Edit icon"
                         fontIcon="edit"
@@ -12,6 +13,7 @@
                 </span>
                 <span class="delete-btn">
                     <mat-icon
+                        (click)="deleteNote($event)"
                         aria-hidden="false"
                         aria-label="Delete icon"
                         fontIcon="delete"
@@ -20,7 +22,7 @@
             </div>
         </div>
         <div class="note-card-body">
-            <p>{{ description }}</p>
+            <p>{{ note.description }}</p>
             <div class="vanish"></div>
         </div>
     </div>

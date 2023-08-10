@@ -1,5 +1,5 @@
 <ng-container *ngIf="foundNote; else notFound">
-    <note-card [id]="foundNote.id" [title]="foundNote.title" [description]="foundNote.description"></note-card>
+    <note-card [note]="foundNote"></note-card>
 </ng-container>
 
 <ng-template #notFound>

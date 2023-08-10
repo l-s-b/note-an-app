@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Note } from 'src/app/shared/note.model';
 import { NotesHttpService } from 'src/app/shared/notes.service';
 
@@ -13,7 +14,10 @@ export class NewNotePage implements OnInit {
 
   note!: Note;
 
-  constructor(private httpService: NotesHttpService) {}
+  constructor(
+    private httpService: NotesHttpService,
+    private router: Router
+    ) {}
   
   ngOnInit() {
     this.note = new Note();
@@ -25,7 +29,7 @@ export class NewNotePage implements OnInit {
 
   postNote = (note: Note) => {
     this.httpService.postNote(note).subscribe(
-      (response: Object) => { console.log('Note post Success!\nResponse: ', response) },
+      (response: Object) => { this.router.navigate(['/']); },
       (error) => { console.log('Note Post failure:\n' + JSON.stringify(error)); } 
     );
   }

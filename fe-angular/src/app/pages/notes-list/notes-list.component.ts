@@ -20,9 +20,14 @@ export class NoteListPage {
     this.httpService.getNotes().subscribe(
       (response: Object) => { 
         this.notes = JSON.parse(JSON.stringify(response)).map(
-          (note: any) => note)
+          (note: any) => note
+        )
       },
       (error) => { console.log(error); }
     );
+  }
+
+  handleNoteDeletion(deletedNoteId: number) {
+    this.notes = this.notes.filter(note => note.id !== deletedNoteId);
   }
 }

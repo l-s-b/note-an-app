@@ -20,19 +20,24 @@ export class NotesHttpService {
   getNote(id: number): Observable<Object> {
     return this.http.get<Object>(env.apiBaseUrl + '/notes/' + id)
   }
+  setTokenOptions(): {[headers: string]: HttpHeaders} {
+    const customHeaders = new HttpHeaders()
+    .set('Authorization', 'Bearer ' + env.jwt)
+    return { headers: customHeaders };
+  }
 
   postNote(note: Note): Observable<Object> {
-    const customHeaders = new HttpHeaders()
-      .set('Authorization', 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOjEsInVzZXJuYW1lIjoiYmV0YS11c2VyIiwiaWF0IjoxNjkxNjE5NzgwLCJleHAiOjE2OTE2MjU3ODB9.XYDgKT9EErWU7gBUF4QzK_mcuoLuuHCWvYkWgS7ufCE')
-
-    const options = {
-      headers: customHeaders // Pass the custom headers to the options object
-    };
-
     return this.http.post<Note>(
       env.apiBaseUrl + '/notes',
       note,
-      options
+      this.setTokenOptions()
     );
+  }
+
+  deleteNote(id: Number): Observable<Object> {
+    return this.http.delete<Number>(
+      env.apiBaseUrl + '/notes/' + id,
+      this.setTokenOptions()
+    )
   }
 }
