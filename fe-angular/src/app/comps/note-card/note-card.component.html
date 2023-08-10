@@ -3,17 +3,15 @@
         <div class="note-card-title">
             <h1>{{ note.title }}</h1>
             <div class="note-card-buttons">
-                <span class="edit-btn">
+                <span class="edit-btn" (click)="editNote($event)">
                     <mat-icon
-                        (click)="editNote($event)"
                         aria-hidden="false"
                         aria-label="Edit icon"
                         fontIcon="edit"
                     ></mat-icon>
                 </span>
-                <span class="delete-btn">
+                <span class="delete-btn" (click)="deleteNote($event)">
                     <mat-icon
-                        (click)="deleteNote($event)"
                         aria-hidden="false"
                         aria-label="Delete icon"
                         fontIcon="delete"
