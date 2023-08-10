@@ -1,28 +1,45 @@
 <div class="edit-form-container">
-    <h1>Edit Note</h1>
-    <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)">
+    <ng-container *ngIf="foundNote; else notFound">
+        <h1>Edit Note</h1>
+        <form #editForm="ngForm" (ngSubmit)="onSubmit(editForm)">
 
-        <div class="field">
-            <label class="label">Title</label>
-            <div class="control">
-                <input type="text" name="title" [ngModel]="note.title" required class="input">
-            </div>  
-        </div>
-        <div class="field">
-            <label class="label">Description</label>
-            <div class="control">
-                <textarea class="textarea" name="description" [ngModel]="note.description" required></textarea>
-            </div>  
-        </div>
-
-        <div class="field edit-form-buttons">
-            <div class="control">
-                <button class="button" type="button" routerLink="">Discard</button>
+            <div class="field">
+                <label class="label">Title</label>
+                <div class="control">
+                    <input
+                        type="text"
+                        class="input"
+                        name="title"
+                        [(ngModel)]="foundNote.title"
+                        required
+                    >
+                </div>  
             </div>
-            <div class="control">
-                <button class="button is-primary" type="submit" [disabled]="!editForm.valid">Save changes</button>
+            <div class="field">
+                <label class="label">Description</label>
+                <div class="control">
+                    <textarea
+                        class="textarea"
+                        name="description"
+                        [(ngModel)]="foundNote.description"
+                        required
+                    ></textarea>
+                </div>  
             </div>
-        </div>
 
-    </form>
+            <div class="field edit-form-buttons">
+                <div class="control">
+                    <button class="button" type="button" routerLink="">Discard</button>
+                </div>
+                <div class="control">
+                    <button class="button is-primary" type="submit" [disabled]="!editForm.valid">Save changes</button>
+                </div>
+            </div>
+        </form>
+    </ng-container>
+    
+    <ng-template #notFound>
+        <note404></note404>
+    </ng-template>
+    
 </div>

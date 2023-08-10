@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { NotesHttpService } from 'src/app/shared/notes.service';
 import { Note } from 'src/app/shared/note.model';
 
@@ -8,8 +8,9 @@ export class DetailLoader {
   foundNote: Note | null = null;
 
   constructor(
-    private httpService: NotesHttpService,
-    private route: ActivatedRoute
+    public httpService: NotesHttpService,
+    public route: ActivatedRoute,
+    public router: Router,
   ) {}
 
   ngOnInit() {

@@ -34,6 +34,14 @@ export class NotesHttpService {
     );
   }
 
+  patchNote(note: Note): Observable<Object> {
+    return this.http.patch<Note>(
+      env.apiBaseUrl + '/notes/' + note.id,
+      note,
+      this.setTokenOptions()
+    );
+  }
+
   deleteNote(id: Number): Observable<Object> {
     return this.http.delete<Number>(
       env.apiBaseUrl + '/notes/' + id,

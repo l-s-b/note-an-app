@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
 import { DetailLoader } from 'src/app/comps/detail-loader.component';
 import { Note } from 'src/app/shared/note.model';
 
@@ -10,10 +9,21 @@ import { Note } from 'src/app/shared/note.model';
   styleUrls: ['./edit-note.component.scss']
 })
 export class EditNotePage extends DetailLoader implements OnInit {
-  note!: Note
+
+  override ngOnInit() {
+    super.ngOnInit();
+  }
 
   onSubmit(form: NgForm) {
-    console.log(form.form.value);
+    form.form.value.id = this.foundNote!.id;
+    this.patchNote(form.form.value);
+  }
+
+  patchNote = (note: Note) => {
+    this.httpService.patchNote(note).subscribe(
+      () => { this.router.navigate(['/']); },
+      (error) => { console.log('Note Edit failure:\n' + JSON.stringify(error)); } 
+    );
   }
 
 }
