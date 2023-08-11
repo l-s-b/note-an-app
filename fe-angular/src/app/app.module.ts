@@ -15,6 +15,7 @@ import { NoteCardComponent } from './comps/note-card/note-card.component';
 import { NotesHttpService } from './shared/notes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Note404Component } from './comps/note404/note404.component';
+import { LoginPage } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { Note404Component } from './comps/note404/note404.component';
     NotFoundPage,
     NoteListPage,
     Note404Component,
+    LoginPage,
   ],
   imports: [
     BrowserModule,

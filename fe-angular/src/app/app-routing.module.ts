@@ -6,6 +6,7 @@ import { NoteDetailPage } from './pages/note-detail/note-detail.component';
 import { EditNotePage } from './pages/edit-note/edit-note.component';
 import { NewNotePage } from './pages/new-note/new-note.component';
 import { NotFoundPage } from './pages/not-found/not-found.component';
+import { LoginPage } from './pages/login/login.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
     component: MainSpaceComponent,
     children: [
       { path: '', component: NoteListPage },
+      { path: 'login', component: LoginPage },
       { path: 'detail/:id', component: NoteDetailPage },
       { path: 'new', component: NewNotePage },
       { path: 'edit/:id', component: EditNotePage },
