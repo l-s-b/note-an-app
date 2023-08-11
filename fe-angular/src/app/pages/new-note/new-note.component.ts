@@ -17,15 +17,11 @@ export class NewNotePage implements OnInit {
   constructor(
     private httpService: NotesHttpService,
     private router: Router
-    ) {}
+  ) {}
   
-  ngOnInit() {
-    this.note = new Note();
-  }
+  ngOnInit() { this.note = new Note(); }
 
-  onSubmit(form: NgForm) {
-    this.postNote(form.form.value)
-  }
+  onSubmit(form: NgForm) { this.postNote(form.form.value); }
 
   postNote = (note: Note) => {
     this.httpService.postNote(note).subscribe(

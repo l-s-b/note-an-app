@@ -28,5 +28,13 @@
         color: $myWhite;
         font-weight: 800;
         font-size: 1.5rem;
+        cursor: pointer;
+    }
+
+    h3 {
+        position: absolute;
+        right: 3rem;
+        margin: auto;
+        cursor: pointer;
     }
 }
