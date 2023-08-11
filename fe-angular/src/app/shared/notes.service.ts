@@ -1,23 +1,21 @@
 import { Injectable } from '@angular/core';
 import { Note } from './note.model';
-import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 import { env } from 'src/envs/development';
+import { AuthService } from './auth.service';
 
 @Injectable({ providedIn: 'root' })
 export class NotesHttpService {
 
   notes: Note[] = new Array<Note>();
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private authService: AuthService,
+    ) {}
   ngOnInit() {}
-
-  setTokenOptions(): {[headers: string]: HttpHeaders} {
-    const customHeaders = new HttpHeaders()
-    .set('Authorization', 'Bearer ' + env.jwt)
-    return { headers: customHeaders };
-  }
 
   // Notes CRUD
   getNotes(): Observable<Object> {
@@ -32,7 +30,7 @@ export class NotesHttpService {
     return this.http.post<Note>(
       env.apiBaseUrl + '/notes',
       note,
-      this.setTokenOptions()
+      this.authService.setTokenOptions()
     );
   }
 
@@ -40,14 +38,14 @@ export class NotesHttpService {
     return this.http.patch<Note>(
       env.apiBaseUrl + '/notes/' + note.id,
       note,
-      this.setTokenOptions()
+      this.authService.setTokenOptions()
     );
   }
 
   deleteNote(id: Number): Observable<Object> {
     return this.http.delete<Number>(
       env.apiBaseUrl + '/notes/' + id,
-      this.setTokenOptions()
+      this.authService.setTokenOptions()
     )
   }
 }
