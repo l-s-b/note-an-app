@@ -10,13 +10,17 @@ export class AuthService {
   ) {}
 
   async signIn(username: string, pass: string): Promise<any> {
-    const user = await this.usersService.findOne(username);
-    if (user?.password !== pass) {
-      throw new UnauthorizedException();
+    const user = await this.usersService.findUser(username);
+    if (user === undefined) {
+      throw new UnauthorizedException('WRONG_USERNAME');
     }
-    const payload = { sub: user.userId, username: user.username };
-    return {
-      access_token: await this.jwtService.signAsync(payload),
-    };
+    if (user?.password !== pass) {
+      throw new UnauthorizedException('WRONG_PASSWORD');
+    }
+    const payload = { username: user.username };
+    const token = await this.jwtService.signAsync(payload);
+    user.jwt = token; // STORE/UPDATE JWT IN DB
+    user.save(); // SAVE DB STORAGE!
+    return { access_token: token };
   }
 }
