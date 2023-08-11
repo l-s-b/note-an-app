@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AuthService } from 'src/app/shared/auth.service';
 import { Note } from 'src/app/shared/note.model';
 import { NotesHttpService } from 'src/app/shared/notes.service';
 
@@ -15,6 +16,7 @@ export class NewNotePage implements OnInit {
   note!: Note;
 
   constructor(
+    private authService: AuthService,
     private httpService: NotesHttpService,
     private router: Router
   ) {}
@@ -25,8 +27,11 @@ export class NewNotePage implements OnInit {
 
   postNote = (note: Note) => {
     this.httpService.postNote(note).subscribe(
-      (response: Object) => { this.router.navigate(['/']); },
-      (error) => { console.log('Note Post failure:\n' + JSON.stringify(error)); } 
+      () => { this.router.navigate(['/']); },
+      (error) => {
+        this.authService.catchAuthErrors(null);
+        console.log('Note Post failure:\n' + JSON.stringify(error));
+      } 
     );
   }
 }

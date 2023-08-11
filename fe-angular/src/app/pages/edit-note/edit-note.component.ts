@@ -22,8 +22,16 @@ export class EditNotePage extends DetailLoader implements OnInit {
   patchNote = (note: Note) => {
     this.httpService.patchNote(note).subscribe(
       () => { this.router.navigate(['/']); },
-      (error) => { console.log('Note Edit failure:\n' + JSON.stringify(error)); } 
+      (error) => {
+        this.authService.catchAuthErrors(null);
+        console.log('Note Edit failure:\n' + JSON.stringify(error));
+      } 
     );
+  }
+
+  private handleHttpError(error: any): void {
+    this.authService.catchAuthErrors(null);
+    console.log('HTTP request error:\n' + JSON.stringify(error));
   }
 
 }

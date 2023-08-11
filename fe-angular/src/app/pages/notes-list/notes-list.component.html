@@ -8,5 +8,9 @@
             [routerLink]="'/detail/' + note.id"
         />
     </div>
-    <button class="button is-primary add-note" routerLink="new">New Note +</button>
+    <button
+        class="button is-primary add-note"
+        goto="new"
+        (click)="checkSessionAndGoTo('new')"
+    >New Note +</button>
 </div>

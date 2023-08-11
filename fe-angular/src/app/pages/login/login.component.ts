@@ -25,6 +25,7 @@ export class LoginPage {
   postLogin = (login: User) => {
     this.authService.postLogin(login).subscribe(
       () => { // No token handling from client side from now.
+        localStorage.setItem('currentUser', login.username); // Store username to get their JWT later on
         this.router.navigate(['/']);
       },
       (error) => { console.log('Login failure:\n' + JSON.stringify(error)); } 

@@ -2,18 +2,22 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { env } from 'src/envs/development';
-import { Observable } from 'rxjs';
+import { Observable, catchError } from 'rxjs';
 import { User } from './login.model';
+import { Router } from '@angular/router';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient,
+    private router: Router
+    ) {}
   ngOnInit() {}
 
-  setTokenOptions(): {[headers: string]: HttpHeaders} {
+  setTokenOptions(jwt: string): {[headers: string]: HttpHeaders} {
     const customHeaders = new HttpHeaders()
-    .set('Authorization', 'Bearer ' + env.jwt)
+    .set('Authorization', 'Bearer ' + jwt)
     return { headers: customHeaders };
   }
 
@@ -23,5 +27,28 @@ export class AuthService {
       user,
       {withCredentials: true},
     );
+  }
+
+  getUsersJWT(): Observable<string> {
+    const username = localStorage.getItem('currentUser');
+    this.catchAuthErrors(username);
+  
+    return this.http.get<string>(
+      env.apiBaseUrl + `/users/${username}/token`
+    );
+  }
+
+  getProfile(jwt: string): any {
+    return this.http.get<Object>(
+      env.apiBaseUrl + '/auth/profile',
+      this.setTokenOptions(jwt)
+    )
+  }
+
+  catchAuthErrors(output: any) {
+    if (output === null) {
+      alert('Log in first!');
+      /* this.router.navigate(['/login']); */
+    }
   }
 }

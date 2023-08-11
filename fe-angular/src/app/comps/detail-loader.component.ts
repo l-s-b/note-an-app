@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { NotesHttpService } from 'src/app/shared/notes.service';
 import { Note } from 'src/app/shared/note.model';
+import { AuthService } from '../shared/auth.service';
 
 @Component({ template: '', })
 export class DetailLoader {
@@ -9,6 +10,7 @@ export class DetailLoader {
 
   constructor(
     public httpService: NotesHttpService,
+    public authService: AuthService,
     public route: ActivatedRoute,
     public router: Router,
   ) {}
