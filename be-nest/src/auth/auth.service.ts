@@ -23,4 +23,9 @@ export class AuthService {
     user.save(); // SAVE DB STORAGE!
     return { access_token: token };
   }
+
+  async getToken(username: string): Promise<any> {
+    const user = await this.usersService.findUser(username);
+    console.log('RETURNING ONLY JWT: ', user.jwt);
+  }
 }

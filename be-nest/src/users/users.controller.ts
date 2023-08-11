@@ -22,6 +22,11 @@ export class UsersController {
     return this.usersService.createUser(user);
   }
 
+  @Get(':username/token')
+  async getUserToken(@Param('username') username: string): Promise<any> {
+    return this.usersService.findUser(username);
+  }
+
   /* TODO
   @UseGuards(AuthGuard)
   @Patch()
