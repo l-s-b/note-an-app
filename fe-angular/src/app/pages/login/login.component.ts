@@ -24,10 +24,8 @@ export class LoginPage {
 
   postLogin = (login: User) => {
     this.authService.postLogin(login).subscribe(
-      (response: any) => {
-        const token = response['access_token']
-        console.log(response);
-        /* this.router.navigate(['/']); */
+      () => { // No token handling from client side from now.
+        this.router.navigate(['/']);
       },
       (error) => { console.log('Login failure:\n' + JSON.stringify(error)); } 
     );
