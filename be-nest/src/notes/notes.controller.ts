@@ -13,7 +13,9 @@ import { Note } from './Note.entity';
 import { NotePatch } from './NotePatch.entity';
 import { NotesService } from './notes.service';
 import { AuthGuard } from '../auth/auth.guard';
+import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Notes')
 @Controller('notes')
 export class NotesController {
   constructor(private notesService: NotesService) {}
@@ -28,12 +30,14 @@ export class NotesController {
     return this.notesService.findOne(id);
   }
 
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Post()
   create(@Body() note: Note) {
     return this.notesService.createNote(note);
   }
 
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Patch(':id')
   async editNote(
@@ -45,6 +49,7 @@ export class NotesController {
     return noteEdited;
   }
 
+  @ApiBearerAuth()
   @UseGuards(AuthGuard)
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id) {

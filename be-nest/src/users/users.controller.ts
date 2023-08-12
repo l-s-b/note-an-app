@@ -12,7 +12,9 @@ import { ParseIntPipe } from '@nestjs/common/pipes/parse-int.pipe';
 import { User } from './User.entity';
 import { UsersService } from './users.service';
 import { AuthGuard } from 'src/auth/auth.guard';
+import { ApiTags } from '@nestjs/swagger';
 
+@ApiTags('Users')
 @Controller('users')
 export class UsersController {
   constructor(private usersService: UsersService) {}
