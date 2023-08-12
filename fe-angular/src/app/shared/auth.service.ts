@@ -30,11 +30,11 @@ export class AuthService {
   }
 
   getUsersJWT(): Observable<string> {
-    const username = localStorage.getItem('currentUser');
-    this.catchAuthErrors(username);
+    const currentUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
+    this.catchAuthErrors(currentUser);
   
     return this.http.get<string>(
-      env.apiBaseUrl + `/users/${username}/token`
+      env.apiBaseUrl + `/users/${currentUser}/token`
     );
   }
 

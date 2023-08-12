@@ -56,7 +56,7 @@ export class NoteListPage {
   }
 
   checkSessionAndGoTo(endpoint: string) {
-    const currentUser = localStorage.getItem('currentUser');
+    const currentUser = localStorage.getItem('currentUser') || sessionStorage.getItem('currentUser');
     this.authService.catchAuthErrors(currentUser);
     if (currentUser !== null) {
       this.authService.getUsersJWT().subscribe(

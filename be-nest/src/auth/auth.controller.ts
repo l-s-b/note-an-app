@@ -11,7 +11,7 @@ import {
 import { AuthGuard } from './auth.guard';
 import { AuthService } from './auth.service';
 import { ApiBearerAuth, ApiTags } from '@nestjs/swagger';
-import { User } from 'src/users/User.entity';
+import { User } from '../users/User.entity';
 
 @ApiTags('Authentication')
 @Controller('auth')

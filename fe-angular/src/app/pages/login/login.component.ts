@@ -40,6 +40,8 @@ export class LoginPage {
       () => { // No token handling from client side from now.
         if ( this.remember ) {
           localStorage.setItem('currentUser', login.username); // Store username to get their JWT later on
+        } else {
+          sessionStorage.setItem('currentUser', login.username)
         }
         this.router.navigate(['/']);
       },
