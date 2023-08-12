@@ -48,7 +48,7 @@ export class AuthService {
   catchAuthErrors(output: any) {
     if (output === null) {
       alert('Log in first!');
-      /* this.router.navigate(['/login']); */
+      this.router.navigate(['/login']);
     }
   }
 }
