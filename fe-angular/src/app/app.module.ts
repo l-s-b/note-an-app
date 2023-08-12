@@ -12,10 +12,10 @@ import { NewNotePage } from './pages/new-note/new-note.component';
 import { NotFoundPage } from './pages/not-found/not-found.component';
 import { RouterModule } from '@angular/router';
 import { NoteCardComponent } from './comps/note-card/note-card.component';
-import { NotesHttpService } from './shared/notes.service';
 import { HttpClientModule } from '@angular/common/http';
 import { Note404Component } from './comps/note404/note404.component';
 import { LoginPage } from './pages/login/login.component';
+import { MatIconModule } from '@angular/material/icon';
 
 @NgModule({
   declarations: [
@@ -34,6 +34,7 @@ import { LoginPage } from './pages/login/login.component';
     AppRoutingModule,
     FormsModule,
     RouterModule,
+    MatIconModule,
     SearchbarComponent,
     NoteCardComponent,
     HttpClientModule,

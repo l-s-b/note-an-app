@@ -17,6 +17,19 @@ export class LoginPage {
   ) {}
 
   user!: User;
+  showPassword: boolean = false;
+  remember: boolean = false;
+
+  togglePasswordVisibility() {
+    this.showPassword = !this.showPassword;
+  }
+
+  toggleUserRemembering() {
+    this.remember = !this.remember;
+    if (!this.remember) {
+      localStorage.setItem('currentUser', '');
+    }
+  }
 
   ngOnInit() { this.user = new User(); }
 
@@ -25,7 +38,9 @@ export class LoginPage {
   postLogin = (login: User) => {
     this.authService.postLogin(login).subscribe(
       () => { // No token handling from client side from now.
-        localStorage.setItem('currentUser', login.username); // Store username to get their JWT later on
+        if ( this.remember ) {
+          localStorage.setItem('currentUser', login.username); // Store username to get their JWT later on
+        }
         this.router.navigate(['/']);
       },
       (error) => { console.log('Login failure:\n' + JSON.stringify(error)); } 

@@ -31,7 +31,20 @@ input {
             box-shadow: 0px 0px 10px 5px rgba($myRed, 0.2);
         }
     }
-    
+}
+
+.visibility {
+    color: $myBlack;
+    position: absolute;
+    right: 0.5rem;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.text-row {
+    display: flex;
+    flex-direction: row;
+    gap: 0.5rem;
 }
 
 @media (max-width: 600px) {

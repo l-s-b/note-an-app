@@ -17,14 +17,28 @@
             <label class="label">Password</label>
             <div class="control">
                 <input
-                    type="password"
+                    type="{{ showPassword ? 'text' : 'password' }}"
                     class="input"
                     name="password"
                     [ngModel]="user.password"
                     required
                 >
-            </div>  
+                <mat-icon
+                    (click)="togglePasswordVisibility()"
+                    class="visibility"
+                >
+                    {{ showPassword ? 'visibility_off' : 'visibility' }}
+                </mat-icon>
+            </div>
+            <div class="text-row">
+            <input
+                type="checkbox"
+                [checked]="remember"
+                (click)="toggleUserRemembering()"
+            >
+            <p>Remember me</p>  
         </div>
+        </div>        
         <div class="field post-form-buttons">
             <div class="control">
                 <button class="button is-primary" type="submit" [disabled]="!postLogin.valid">Log me in</button>
