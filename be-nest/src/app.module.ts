@@ -12,11 +12,11 @@ import { UsersModule } from './users/users.module';
 ConfigModule.forRoot();
 const typeormParams: MysqlConnectionOptions = {
   type: 'mysql',
-  host: 'localhost',
+  host: process.env.DB_HOST,
   port: 3306,
-  username: process.env.MYSQL_USER1_NAME,
-  password: process.env.MYSQL_USER1_PASS,
-  database: process.env.MYSQL_DBNAME,
+  username: process.env.DB_USER,
+  password: process.env.DB_PASS,
+  database: process.env.DB_NAME,
   entities: ['dist/**/*.entity.js'],
   synchronize: true,
 };

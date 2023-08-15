@@ -30,7 +30,6 @@ export class NotesHttpService {
     return this.authService.getUsersJWT().pipe(
       switchMap((user: any) => {
         const options = this.authService.setTokenOptions(user.jwt);
-        console.log(options)
         return this.http.post<Note>(
           env.apiBaseUrl + '/notes',
           note,
@@ -40,11 +39,11 @@ export class NotesHttpService {
     );
   }
 
-  patchNote(note: Note): Observable<WebGLVertexArrayObject> {
+  patchNote(note: Note): Observable<any> {
     return this.authService.getUsersJWT().pipe(
       switchMap((user: any) => {
         const options = this.authService.setTokenOptions(user.jwt);
-        return this.http.patch<Note>(
+        return this.http.put<Note>(
           env.apiBaseUrl + '/notes/' + note.id,
           note,
           options
