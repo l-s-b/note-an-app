@@ -1,0 +1,19 @@
+services:
+  backend:
+    build:
+      context: ./be-nest
+    ports:
+      - '3000:3000'
+    env_file:
+      - ./be-nest/.env  # Path to the existing .env file
+    networks:
+      - app-network
+  frontend:
+    build:
+      context: ./fe-angular
+    ports:
+      - '4200:80'
+    networks:
+      - app-network
+networks:
+  app-network:
