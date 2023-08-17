@@ -91,7 +91,8 @@ $ cd ..
 $ npm start
 ```
 
-Make sure to Sign up into the app (post a user) through Swagger
+Log in with 'test-user':'test-pass', or sign up into the app (post a user).
+Do so through Swagger
 (again, at http://localhost:3000/api/docs/)
 or Postman
 (by importing the collection located in /be-nest/src/postman-collection.json).
